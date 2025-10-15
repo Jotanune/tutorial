@@ -1,0 +1,26 @@
+<div class="container">
+    @if (client.id) {
+        <h1>Modificar cliente</h1>
+    } @else {
+        <h1>Crear cliente</h1>
+    }
+
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="text" matInput placeholder="Identificador" formControlName="id">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput placeholder="Nombre del cliente" formControlName="name">
+            <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre no puede estar vacío</mat-error>
+            <mat-error *ngIf="form.get('name')?.hasError('duplicate')">Ya existe un cliente con ese nombre</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()" [disabled]="form.invalid">Guardar</button>
+    </div>
+</div>
