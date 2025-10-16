@@ -34,12 +34,20 @@ public class GameServiceImpl implements GameService {
      * {@inheritDoc}
      */
     @Override
+    public Game get(Long id) {
+        return this.gameRepository.findById(id).orElse(null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Game> find(String title, Long idCategory) {
 
         GameSpecification titleSpec = new GameSpecification(new SearchCriteria("title", ":", title));
         GameSpecification categorySpec = new GameSpecification(new SearchCriteria("category.id", ":", idCategory));
 
-        Specification<Game> spec = Specification.where(titleSpec).and(categorySpec);
+        Specification<Game> spec = Specification.allOf(titleSpec, categorySpec);
 
         return this.gameRepository.findAll(spec);
     }
@@ -58,12 +66,14 @@ public class GameServiceImpl implements GameService {
             game = this.gameRepository.findById(id).orElse(null);
         }
 
-        BeanUtils.copyProperties(dto, game, "id", "author", "category");
+        if (game != null) {
+            BeanUtils.copyProperties(dto, game, "id", "author", "category");
 
-        game.setAuthor(authorService.get(dto.getAuthor().getId()));
-        game.setCategory(categoryService.get(dto.getCategory().getId()));
+            game.setAuthor(authorService.get(dto.getAuthor().getId()));
+            game.setCategory(categoryService.get(dto.getCategory().getId()));
 
-        this.gameRepository.save(game);
+            this.gameRepository.save(game);
+        }
     }
 
 }

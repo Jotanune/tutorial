@@ -1,0 +1,22 @@
+.container {
+    padding: 20px;
+    min-width: 500px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
