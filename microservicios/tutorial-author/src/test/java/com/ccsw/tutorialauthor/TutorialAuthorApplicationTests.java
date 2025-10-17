@@ -1,13 +1,13 @@
-package com.ccsw.tutorial_game;
+package com.ccsw.tutorialauthor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TutorialGameApplicationTests {
+class TutorialAuthorApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

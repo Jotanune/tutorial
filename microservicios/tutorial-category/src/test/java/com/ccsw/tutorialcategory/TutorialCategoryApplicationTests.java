@@ -1,13 +1,13 @@
-package com.ccsw.tutorial_author;
+package com.ccsw.tutorialcategory;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TutorialAuthorApplicationTests {
+class TutorialCategoryApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
