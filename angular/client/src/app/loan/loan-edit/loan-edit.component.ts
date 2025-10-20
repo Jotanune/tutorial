@@ -49,7 +49,8 @@ export class LoanEditComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.loan = this.data.loan ? Object.assign({}, this.data.loan) : new Loan();
+        // Se usará para editar y para crear, si es existente crea copia sino crea nueva instancia.
+        this.loan = this.data.loan ? Object.assign({}, this.data.loan) : new Loan(); 
 
         this.gameService.getGames().subscribe((games) => {
             this.games = games;

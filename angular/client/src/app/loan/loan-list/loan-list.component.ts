@@ -131,6 +131,18 @@ export class LoanListComponent implements OnInit {
         });
     }
 
+    editLoan(loan: Loan) {
+        const dialogRef = this.dialog.open(LoanEditComponent, {
+            data: { loan }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.loadLoans();
+            }
+        });
+    }
+
     deleteLoan(loan: Loan) {
         const dialogRef = this.dialog.open(DialogConfirmationComponent, {
             data: { 
